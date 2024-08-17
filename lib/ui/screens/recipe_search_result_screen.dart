@@ -7,8 +7,8 @@ import 'package:food_recipe_app/ui/widgets/snack_bar.dart';
 import 'package:get/get.dart';
 
 class RecipeSearchResultScreen extends StatefulWidget {
-  const RecipeSearchResultScreen({super.key, required this.quary});
-  final String quary;
+  const RecipeSearchResultScreen({super.key, required this.query});
+  final String query;
 
   @override
   State<RecipeSearchResultScreen> createState() =>
@@ -18,7 +18,7 @@ class RecipeSearchResultScreen extends StatefulWidget {
 class _RecipeSearchResultScreenState extends State<RecipeSearchResultScreen> {
   Future<void> _getRecipes() async {
     bool result =
-        await Get.find<RecipeSearchController>().getSearchRecipe(widget.quary);
+        await Get.find<RecipeSearchController>().getSearchRecipe(widget.query);
 
     result ? null : toastMessege(context, 'Failed to load recipes');
   }
@@ -86,8 +86,9 @@ class _RecipeSearchResultScreenState extends State<RecipeSearchResultScreen> {
                               padding: const EdgeInsets.symmetric(vertical: 2),
                               child: Text(
                                 recipeSearchController
-                                    .searchRecipeList[index].title
-                                    .toString(),
+                                        .searchRecipeList[index].title
+                                        .toString() ??
+                                    '',
                                 style: CustomTextStyles.recipeTitle,
                               ),
                             ),
@@ -95,13 +96,13 @@ class _RecipeSearchResultScreenState extends State<RecipeSearchResultScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Ingredients : ${recipeSearchController.searchRecipeList[index].ingredients.toString()}",
+                                  "Ingredients : ${recipeSearchController.searchRecipeList[index].ingredients.toString() ?? ''}",
                                   style: CustomTextStyles.poppins,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
-                                  "Instructions : ${recipeSearchController.searchRecipeList[index].instructions.toString()}",
+                                  "Instructions : ${recipeSearchController.searchRecipeList[index].instructions.toString() ?? ''}",
                                   style: CustomTextStyles.poppins,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,

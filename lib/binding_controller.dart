@@ -6,6 +6,7 @@ class BindingController extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HomeScreenDefaultRecipeController());
-    Get.lazyPut(() => RecipeSearchController());
+    Get.put(RecipeSearchController());
+    // Get.lazyPut(() => RecipeSearchController());
   }
 }

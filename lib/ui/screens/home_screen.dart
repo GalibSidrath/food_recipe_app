@@ -72,8 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       suffixIcon: IconButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => RecipeSearchResultScreen(
+                            //       query: _searchTEController.text.trim(),
+                            //     ),
+                            //   ),
+                            // );
+                            final query = _searchTEController.text;
                             Get.to(() => RecipeSearchResultScreen(
-                                  quary: _searchTEController.text.trim(),
+                                  query: query,
                                 ));
                           }
                         },
@@ -145,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Ingrefients : ${homeScreenDefaultRecipeController.recipeList[index].ingredients.toString()}",
+                            "Ingredients : ${homeScreenDefaultRecipeController.recipeList[index].ingredients.toString()}",
                             style: CustomTextStyles.poppins,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,

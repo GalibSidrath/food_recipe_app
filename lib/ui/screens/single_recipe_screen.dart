@@ -32,8 +32,12 @@ class _SingleRecipeScreenState extends State<SingleRecipeScreen> {
                 widget.recipeModel.title.toString(),
                 style: CustomTextStyles.titlePoppins,
               ),
+              Text(
+                widget.recipeModel.servings.toString(),
+                style: CustomTextStyles.poppins,
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   'Ingredients : ${widget.recipeModel.ingredients.toString().split('|').join(',\n')}',
                   style: CustomTextStyles.singleRecipePageIngredients,
